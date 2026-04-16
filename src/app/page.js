@@ -6,7 +6,7 @@ import PinnedAffiliate from '@/components/PinnedAffiliate';
 import SummaryToggle from '@/components/SummaryToggle';
 
 // This makes Next.js regenerate the page in the background every 3600 seconds (1 hour). Set and forget!
-export const revalidate = 3600;
+export const revalidate = 3600; // Trigger Vercel Build
 
 export default async function Home() {
   const articles = await getLatestAIFeeds();
