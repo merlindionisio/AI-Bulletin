@@ -12,8 +12,8 @@ const parser = new Parser({
 const FEEDS = [
   { name: 'TechCrunch AI', url: 'https://techcrunch.com/category/artificial-intelligence/feed/' },
   { name: 'HackerNews AI', url: 'https://hnrss.org/newest?q=AI' },
-  { name: 'Reddit AI', url: 'https://www.reddit.com/r/artificial/.rss' },
-  { name: 'MachineLearning', url: 'https://www.reddit.com/r/MachineLearning/.rss' },
+  { name: 'Google AI Blog', url: 'https://blog.google/technology/ai/rss/' },
+  { name: 'AWS Machine Learning', url: 'https://aws.amazon.com/blogs/machine-learning/feed/' },
   { name: 'Towards Data Science', url: 'https://towardsdatascience.com/feed' }
 ];
 
