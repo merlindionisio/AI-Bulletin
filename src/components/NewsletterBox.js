@@ -12,11 +12,21 @@ export default function NewsletterBox() {
     if (!email) return;
     setStatus('loading');
     
-    // Simulate API call to custom /api/subscribe route using Resend
-    setTimeout(() => {
-      setStatus('success');
-      setEmail('');
-    }, 1500);
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      if (res.ok) {
+        setStatus('success');
+        setEmail('');
+      } else {
+        setStatus('idle');
+      }
+    } catch {
+      setStatus('idle');
+    }
   };
 
   return (
