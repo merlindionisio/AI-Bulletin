@@ -23,7 +23,9 @@
     "rss-parser": "^3.13.0"
   },
   "devDependencies": {
+    "@notionhq/client": "^5.18.0",
     "eslint": "^9",
-    "eslint-config-next": "16.2.3"
+    "eslint-config-next": "16.2.3",
+    "notion-to-md": "^3.1.9"
   }
 }
