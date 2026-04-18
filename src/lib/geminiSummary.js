@@ -7,8 +7,7 @@ export async function generateWeeklySummary(articles) {
 
   try {
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    // Fallback to standard gemini-pro to ensure maximum compatibility with API keys
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
     
     // Pass top 15 articles to the prompt 
     const topArticles = articles.slice(0, 15).map(a => `- ${a.title} (${a.source})`).join('\n');
