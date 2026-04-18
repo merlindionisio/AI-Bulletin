@@ -28,7 +28,11 @@ const FEEDS = [
   { name: 'Google Gemini', url: 'https://hnrss.org/newest?q=Gemini+OR+DeepMind' },
   { name: 'xAI / Grok', url: 'https://hnrss.org/newest?q=xAI+OR+Grok' },
   { name: 'Perplexity AI', url: 'https://hnrss.org/newest?q=Perplexity' },
-  { name: 'Moonshot / Kimi', url: 'https://hnrss.org/newest?q=Kimi+OR+Moonshot' }
+  { name: 'Moonshot / Kimi', url: 'https://hnrss.org/newest?q=Kimi+OR+Moonshot' },
+
+  // AI Hardware & Infrastructure
+  { name: 'NVIDIA News', url: 'https://blogs.nvidia.com/feed/' },
+  { name: 'AI Silicon / GPUs', url: 'https://hnrss.org/newest?q=Nvidia+OR+AMD+OR+TSMC+OR+GPU' }
 ];
 
 export async function getLatestAIFeeds() {
