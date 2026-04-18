@@ -2,16 +2,32 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Flame, MessageCircle, Share2, ThumbsUp } from 'lucide-react';
+import { createClient } from '@/lib/supabase/client';
 
 export default function ReactionRow({ articleUrl }) {
   const [upvotes, setUpvotes] = useState(Math.floor(Math.random() * 50)); // Placeholder until DB sync
   const [hasVoted, setHasVoted] = useState(false);
 
-  const handleVote = () => {
+  const handleVote = async () => {
     if (!hasVoted) {
       setUpvotes(prev => prev + 1);
       setHasVoted(true);
-      // TODO: Sync with Supabase Database here
+      
+      const supabase = createClient();
+      const { data: { session } } = await supabase.auth.getSession();
+      
+      if (session?.user) {
+        // Log the active user's vote into Supabase
+        await supabase.from('Reactions').insert([
+          { article_url: articleUrl, user_id: session.user.id } // Requires `user_id` inside reactions table 
+        ]);
+        
+        // Grant XP for interacting with the platform natively
+        const { data: userData } = await supabase.from('users').select('xp_points').eq('id', session.user.id).single();
+        if (userData) {
+          await supabase.from('users').update({ xp_points: userData.xp_points + 1 }).eq('id', session.user.id);
+        }
+      }
     }
   };
 

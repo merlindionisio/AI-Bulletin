@@ -4,6 +4,7 @@ import NewsRow from '@/components/NewsRow';
 import AdSlot from '@/components/AdSlot';
 import PinnedAffiliate from '@/components/PinnedAffiliate';
 import NewsletterBox from '@/components/NewsletterBox';
+import AuthButton from '@/components/AuthButton';
 
 export const dynamic = 'force-dynamic';
 
@@ -21,9 +22,12 @@ export default async function Home() {
 
   return (
     <main className="container">
-      <header>
-        <h1>AI Bulletin</h1>
-        <p className="subtitle">Real-time Artificial Intelligence News Aggregator</p>
+      <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div>
+          <h1>AI Bulletin</h1>
+          <p className="subtitle">Real-time Artificial Intelligence News Aggregator</p>
+        </div>
+        <AuthButton />
       </header>
       
       <NewsletterBox />
