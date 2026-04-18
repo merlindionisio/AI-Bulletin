@@ -1,10 +1,11 @@
 'use client';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Flame, MessageCircle, Share2, ThumbsUp } from 'lucide-react';
+import { Flame, Share2, ThumbsUp } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
+import DisqusThread from '@/components/DisqusThread';
 
-export default function ReactionRow({ articleUrl }) {
+export default function ReactionRow({ articleUrl, articleTitle }) {
   const [upvotes, setUpvotes] = useState(Math.floor(Math.random() * 50)); // Placeholder until DB sync
   const [hasVoted, setHasVoted] = useState(false);
 
@@ -82,7 +83,7 @@ export default function ReactionRow({ articleUrl }) {
       
       <div style={{ flex: 1 }} />
       <ActionButton icon={ThumbsUp} label="React" />
-      <ActionButton icon={MessageCircle} label="Discuss" />
+      <DisqusThread articleUrl={articleUrl} articleTitle={articleTitle} />
       <ActionButton icon={Share2} label="Share" />
     </div>
   );

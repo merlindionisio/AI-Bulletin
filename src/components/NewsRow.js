@@ -25,7 +25,7 @@ export default function NewsRow({ article }) {
         <div className="news-title" style={{ flex: 1, fontWeight: 500, margin: '0 1rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{article.title}</div>
         <div className="news-source" style={{ ...getBadgeStyle(article.source), padding: '0.25rem 0.5rem', borderRadius: '4px', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{article.source}</div>
       </a>
-      <ReactionRow articleUrl={article.link} />
+      <ReactionRow articleUrl={article.link} articleTitle={article.title} />
     </div>
   );
 }

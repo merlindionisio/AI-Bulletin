@@ -41,7 +41,13 @@ export async function getLatestAIFeeds() {
   await Promise.all(
     FEEDS.map(async (feed) => {
       try {
-        const parsed = await parser.parseURL(feed.url);
+        // 5-second timeout per feed to prevent ETIMEDOUT from blocking the page
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 5000);
+
+        const parsed = await parser.parseURL(feed.url, { signal: controller.signal });
+        clearTimeout(timeout);
+
         parsed.items.forEach((item) => {
           allArticles.push({
             title: item.title,
@@ -51,7 +57,8 @@ export async function getLatestAIFeeds() {
           });
         });
       } catch (e) {
-        console.error(`Error fetching feed ${feed.name}:`, e);
+        // Silently skip timed-out or unreachable feeds — they'll load next refresh
+        console.warn(`[feed-skip] ${feed.name}: ${e.code || e.message}`);
       }
     })
   );
