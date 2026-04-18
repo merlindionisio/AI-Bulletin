@@ -17,10 +17,18 @@ const FEEDS = [
   { name: 'Towards Data Science', url: 'https://towardsdatascience.com/feed' },
   { name: 'MIT Tech Review', url: 'https://www.technologyreview.com/topic/artificial-intelligence/feed' },
   { name: 'AI News', url: 'https://www.artificialintelligence-news.com/feed/' },
-  { name: 'OpenAI Research', url: 'https://openai.com/news/rss.xml' },
   { name: 'Hugging Face Blog', url: 'https://huggingface.co/blog/feed.xml' },
   { name: 'Microsoft AI', url: 'https://blogs.microsoft.com/ai/feed/' },
-  { name: 'The Batch (DeepLearning)', url: 'https://www.deeplearning.ai/the-batch/feed/' }
+  { name: 'The Batch', url: 'https://www.deeplearning.ai/the-batch/feed/' },
+  
+  // Dedicated Developer Model Tracking
+  { name: 'OpenAI / ChatGPT', url: 'https://hnrss.org/newest?q=OpenAI+OR+ChatGPT+OR+Sora' },
+  { name: 'Anthropic / Claude', url: 'https://hnrss.org/newest?q=Anthropic+OR+Claude' },
+  { name: 'DeepSeek HQ', url: 'https://hnrss.org/newest?q=DeepSeek' },
+  { name: 'Google Gemini', url: 'https://hnrss.org/newest?q=Gemini+OR+DeepMind' },
+  { name: 'xAI / Grok', url: 'https://hnrss.org/newest?q=xAI+OR+Grok' },
+  { name: 'Perplexity AI', url: 'https://hnrss.org/newest?q=Perplexity' },
+  { name: 'Moonshot / Kimi', url: 'https://hnrss.org/newest?q=Kimi+OR+Moonshot' }
 ];
 
 export async function getLatestAIFeeds() {
